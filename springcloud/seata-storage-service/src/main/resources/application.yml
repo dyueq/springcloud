@@ -1,0 +1,53 @@
+server:
+  port: 2002
+spring:
+  application:
+    name: seata-storage-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+  datasource:
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/seata_storage?serverTimezong=UTC
+      username: root
+      password: 123456
+
+mybatis:
+  type-aliases-package: com.sc.bean
+  mapper-locations: classpath:mapper/*.xml
+
+feign:
+  circuitbreaker:
+    enabled: true
+
+seata:
+  application-id: ${spring.application.name}
+  # 这里的配置对应 seata-server.yml 中的 service.vgroupMapping.default_tx_group=default
+  enable-auto-data-source-proxy: false
+  config:
+    type: nacos
+    nacos:
+      server-addr: localhost:8848
+      username: nacos
+      password: nacos
+      namespace: 8ca3e3a0-d0cf-4ffd-b7bf-e0f9c45b1625
+      # 微服务必须在一个组，否则服务发现不了
+      group: SEATA_GROUP
+      dataId: "seata-server.yaml"
+  registry:
+    type: nacos
+    nacos:
+      application: seata-server
+      server-addr: localhost:8848
+      group: SEATA_GROUP
+      namespace: 8ca3e3a0-d0cf-4ffd-b7bf-e0f9c45b1625
+      username: nacos
+      password: nacos
+
+
+logging:
+  level:
+    io:
+      seata: info

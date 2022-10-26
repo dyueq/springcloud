@@ -1,0 +1,8 @@
+{
+  "properties": [
+    {
+      "name": "seata.registry.nacos.dataId",
+      "type": "java.lang.String",
+      "description": "Description for seata.registry.nacos.dataId."
+  }
+] }

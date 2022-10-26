@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sc.mapper.PayMapper">
+    <insert id="create" parameterType="com.sc.bean.Pay" useGeneratedKeys="true" keyProperty="id">
+        insert into pay (serial) values (#{serial});
+    </insert>
+
+    <resultMap id="BaseResultMap" type="com.sc.bean.Pay">
+        <id column="id" property="id" jdbcType="BIGINT"></id>
+        <id column="serial" property="serial" jdbcType="VARCHAR"></id>
+    </resultMap>
+
+    <select id="getPayByID" resultMap="BaseResultMap" parameterType="java.lang.Long">
+        select * from pay where id = #{id};
+    </select>
+
+</mapper>

@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.sc</groupId>
+  <artifactId>springcloud</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
+
+  <modules>
+
+    <module>cloud-pay-8001</module>
+    <module>cloud-order-80</module>
+    <module>cloud-api-commons</module>
+    <module>cloud-eureka-server7001</module>
+    <module>cloud-eureka-server7002</module>
+      <module>cloud-pay-8002</module>
+      <module>cloud-consul-pay8006</module>
+      <module>cloud-order-consul80</module>
+      <module>cloud-order-openfeign80</module>
+      <module>cloud-pay-hystrix8001</module>
+      <module>cloud-order-feign-hystrix80</module>
+      <module>cloud-hystrix-dashboard9001</module>
+      <module>cloud-gateway-9527</module>
+      <module>cloud-config-3344</module>
+      <module>cloud-config-client3355</module>
+      <module>cloud-config-client3366</module>
+    <module>cloud-alibaba-pay9001</module>
+      <module>cloud-alibaba-pay9002</module>
+      <module>cloud-alibab-order83</module>
+      <module>cloud-alibaba-config-nacos3377</module>
+      <module>cloud-alibaba-sentinel8401</module>
+      <module>cloud-alibaba-pay9003</module>
+      <module>cloud-alibaba-pay9004</module>
+    <module>cloud-alibaba-order84</module>
+      <module>seata-order-service</module>
+      <module>seata-account-service</module>
+      <module>seata-storage-service</module>
+  </modules>
+
+  <!--统一管理jar包版本-->
+<!--  <properties>-->
+<!--    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>-->
+<!--    <maven.compiler.source>1.8</maven.compiler.source>-->
+<!--    <maven.compiler.target>1.8</maven.compiler.target>-->
+<!--    <junit.version>4.12</junit.version>-->
+<!--    <log4j.version>1.2.17</log4j.version>-->
+<!--    <lombok.version>1.16.18</lombok.version>-->
+<!--    <mysql.version>8.0.28</mysql.version>-->
+<!--    <druid.version>1.2.12</druid.version>-->
+<!--    <mybatis.spring.boot.version>2.2.2</mybatis.spring.boot.version>-->
+<!--  </properties>-->
+
+  <!--子模块继承之后，提供作用：锁定版本+子module不用写groupId和version-->
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <!--spring boot 2.6.11-->
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-dependencies</artifactId>
+        <version>2.6.11</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <!--spring cloud 2021.0.4-->
+      <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-dependencies</artifactId>
+        <version>2021.0.4</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <!--spring cloud alibaba 2.1.0-->
+      <dependency>
+        <groupId>com.alibaba.cloud</groupId>
+        <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+        <version>2021.0.4.0</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <!--mysql-->
+      <dependency>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+        <version>8.0.28</version>
+      </dependency>
+      <!--druid-->
+      <dependency>
+        <groupId>com.alibaba</groupId>
+        <artifactId>druid-spring-boot-starter</artifactId>
+        <version>1.1.10</version>
+      </dependency>
+      <!--mybatis-->
+      <dependency>
+        <groupId>org.mybatis.spring.boot</groupId>
+        <artifactId>mybatis-spring-boot-starter</artifactId>
+        <version>2.2.2</version>
+      </dependency>
+      <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-starter-bootstrap</artifactId>
+        <version>3.1.4</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <name>Maven</name>
+  <!-- FIXME change it to the project's website -->
+  <url>http://maven.apache.org/</url>
+  <inceptionYear>2001</inceptionYear>
+
+  <distributionManagement>
+    <site>
+      <id>website</id>
+      <url>scp://webhost.company.com/www/website</url>
+    </site>
+  </distributionManagement>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <build>
+    <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-clean-plugin</artifactId>
+          <version>3.2.0</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-site-plugin</artifactId>
+          <version>3.3</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-project-info-reports-plugin</artifactId>
+          <version>3.4.1</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-site-plugin</artifactId>
+        <configuration>
+          <locales>en,fr</locales>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+  <reporting>
+    <plugins>
+      <plugin>
+        <artifactId>maven-project-info-reports-plugin</artifactId>
+      </plugin>
+    </plugins>
+  </reporting>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-project-info-reports-plugin</artifactId>
+      <version>3.4.1</version>
+    </dependency>
+  </dependencies>
+</project>
